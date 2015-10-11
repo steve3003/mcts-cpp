@@ -7,6 +7,8 @@ namespace mcts
 {
 	class TreeNode
 	{
+	public:
+		virtual ~TreeNode() = 0;
 		virtual TreeNode& AddChild(const GameMove& move, const GameState& state) = 0;
 		virtual string ChildrenToString() const = 0;
 		virtual GameMove& GetBestMove() const = 0;

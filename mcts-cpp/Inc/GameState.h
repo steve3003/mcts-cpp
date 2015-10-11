@@ -10,6 +10,7 @@ namespace mcts
 	class GameState
 	{
 	public:
+		virtual ~GameState() = 0;
 		virtual vector<GameMove> GetMoves() const = 0;
 		virtual void DoMove(const GameMove& move) = 0;
 		virtual double GetResult(int player) const = 0;

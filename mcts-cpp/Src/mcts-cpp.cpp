@@ -1,6 +1,6 @@
 
 #include <iostream>
-#include "GameState.h"
+#include "MCTSAlgorithm.h"
 
 using namespace std;
 using namespace mcts;

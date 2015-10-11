@@ -11,12 +11,15 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="mcts-cpp.cpp" />
+    <ClCompile Include="Src\MCTSAlgorithm.cpp" />
+    <ClCompile Include="Src\mcts-cpp.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GameMove.h" />
-    <ClInclude Include="GameState.h" />
-    <ClInclude Include="TreeNode.h" />
+    <ClInclude Include="Inc\GameMove.h" />
+    <ClInclude Include="Inc\GameState.h" />
+    <ClInclude Include="Inc\TreeNode.h" />
+    <ClInclude Include="Inc\TreeNodeCreator.h" />
+    <ClInclude Include="Inc\MCTSAlgorithm.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{23F4D735-C4E5-490E-A7BA-9E1D53750527}</ProjectGuid>
@@ -49,6 +52,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>Inc;$(IncludePath)</IncludePath>
+    <SourcePath>Src;$(SourcePath)</SourcePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
