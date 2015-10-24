@@ -1,4 +1,5 @@
 #include "MCTSAlgorithm.h"
+#include <memory>
 
 using namespace mcts;
 
@@ -12,15 +13,15 @@ const GameMove& MCTSAlgorithm::Search(GameState& rootState, int iterations)
 		mbSearch = true;
 	}
 
-	TreeNode& rootNode = mTreeCreator.GenRootNode(rootState);
+	shared_ptr<TreeNode> rootNode = mTreeCreator.GenRootNode(rootState);
 	for (int i = 0; i < iterations; ++i)
 	{
-		TreeNode* node = &rootNode;
+		shared_ptr<TreeNode> node = rootNode;
 		GameState& state = rootState;
 
 		// Select
 		while (!node->HasMovesToTry() && node->HasChildren()) {
-			node = &node->SelectChild();
+			node = node->SelectChild();
 			state.DoMove(node->GetMove());
 		}
 
@@ -28,7 +29,7 @@ const GameMove& MCTSAlgorithm::Search(GameState& rootState, int iterations)
 		if (node->HasMovesToTry()) {
 			GameMove& move = node->SelectUntriedMove();
 			state.DoMove(move);
-			node = &node->AddChild(move, state);
+			node = node->AddChild(move, state);
 		}
 
 		// Rollout
@@ -39,7 +40,7 @@ const GameMove& MCTSAlgorithm::Search(GameState& rootState, int iterations)
 		// Backpropagate
 		while (node != nullptr) {
 			node->Update(state.GetResult(node->GetPlayerWhoJustMoved()));
-			node = &node->GetParent();
+			node = node->GetParent();
 		}
 
 		if (!mbSearch) {
@@ -48,7 +49,7 @@ const GameMove& MCTSAlgorithm::Search(GameState& rootState, int iterations)
 		}
 	}
 
-	return rootNode.GetBestMove();
+	return rootNode->GetBestMove();
 }
 
 const TreeNodeCreator& MCTSAlgorithm::GetTreeCreator()

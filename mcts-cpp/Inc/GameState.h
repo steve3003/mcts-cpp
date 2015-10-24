@@ -2,6 +2,7 @@
 
 #include "GameMove.h"
 #include <vector>
+#include <memory>
 
 using namespace std;
 
@@ -18,7 +19,7 @@ namespace mcts
 		virtual GameMove& GetSimulationMove() const = 0;
 		virtual int GetPlayerWhoJustMoved() const = 0;
 		virtual bool IsTerminal() const = 0;
-		virtual GameMove& ParseMove(const string& move) const = 0;
+		virtual unique_ptr<GameMove> ParseMove(const string& move) const = 0;
 	};
 }
 
