@@ -9,7 +9,7 @@ namespace mcts
 	public:
 		MCTSAlgorithm(const TreeNodeCreator& treeCreator);
 		~MCTSAlgorithm();
-		const GameMove& Search(GameState& rootState, int iterations);
+		const shared_ptr<const GameMove> Search(const GameState& rootState, int iterations);
 		void Abort();
 		const TreeNodeCreator& GetTreeCreator();
 	private:

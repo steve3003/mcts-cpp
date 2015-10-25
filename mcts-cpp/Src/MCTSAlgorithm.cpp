@@ -1,5 +1,4 @@
 #include "MCTSAlgorithm.h"
-#include <memory>
 
 using namespace mcts;
 
@@ -7,7 +6,7 @@ MCTSAlgorithm::MCTSAlgorithm(const TreeNodeCreator& treeCreator) : mTreeCreator(
 {
 }
 
-const GameMove& MCTSAlgorithm::Search(GameState& rootState, int iterations)
+const shared_ptr<const GameMove> MCTSAlgorithm::Search(const GameState& rootState, int iterations)
 {
 	if (!mbSearch) {
 		mbSearch = true;
@@ -17,29 +16,29 @@ const GameMove& MCTSAlgorithm::Search(GameState& rootState, int iterations)
 	for (int i = 0; i < iterations; ++i)
 	{
 		shared_ptr<TreeNode> node = rootNode;
-		GameState& state = rootState;
+		shared_ptr<GameState> state = rootState.Clone();
 
 		// Select
 		while (!node->HasMovesToTry() && node->HasChildren()) {
 			node = node->SelectChild();
-			state.DoMove(node->GetMove());
+			state->DoMove(*node->GetMove());
 		}
 
 		// Expand
 		if (node->HasMovesToTry()) {
-			GameMove& move = node->SelectUntriedMove();
-			state.DoMove(move);
+			shared_ptr<const GameMove> move = node->SelectUntriedMove();
+			state->DoMove(*move);
 			node = node->AddChild(move, state);
 		}
 
 		// Rollout
-		while (!state.IsTerminal()) {
-			state.DoMove(state.GetSimulationMove());
+		while (!state->IsTerminal()) {
+			state->DoMove(state->GetSimulationMove());
 		}
 
 		// Backpropagate
 		while (node != nullptr) {
-			node->Update(state.GetResult(node->GetPlayerWhoJustMoved()));
+			node->Update(state->GetResult(node->GetPlayerWhoJustMoved()));
 			node = node->GetParent();
 		}
 
