@@ -13,7 +13,7 @@ namespace mcts
 	public:
 		virtual ~GameState() = 0;
 		virtual shared_ptr<GameState> Clone() const = 0;
-		virtual vector<const GameMove> GetMoves() const = 0;
+		virtual vector<shared_ptr<const GameMove>> GetMoves() const = 0;
 		virtual void DoMove(const GameMove& move) = 0;
 		virtual double GetResult(int player) const = 0;
 		virtual int GetWinner() const = 0;

@@ -23,8 +23,8 @@ namespace mcts
 		virtual string TreeToString(int indent) const override;
 		virtual void Update(double result) override;
 	protected:
-		vector<UCTTreeNode> mChildNodes;
-		vector<const GameMove> mUntriedMoves;
+		vector<shared_ptr<UCTTreeNode>> mChildNodes;
+		vector<shared_ptr<const GameMove>> mUntriedMoves;
 		int mVisits;
 		double mConstant;
 	private:
@@ -32,8 +32,8 @@ namespace mcts
 		shared_ptr<const GameMove> mMove;
 		double mWins;
 		int mPlayerWhoJustMoved;
-		double UCTValue();
-		string IndentString(int indent);
+		double UCTValue() const;
+		string IndentString(int indent) const;
 	};
 }
 

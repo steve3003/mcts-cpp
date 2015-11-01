@@ -1,4 +1,5 @@
 #include "UCTTreeNode.h"
+#include <algorithm>
 
 using namespace mcts;
 
@@ -11,6 +12,10 @@ UCTTreeNode::UCTTreeNode(shared_ptr<const GameMove> move, shared_ptr<UCTTreeNode
 	{
 		mUntriedMoves = state->GetMoves();
 	}
+}
+
+UCTTreeNode::~UCTTreeNode()
+{
 }
 
 int UCTTreeNode::GetPlayerWhoJustMoved() const
@@ -28,6 +33,9 @@ shared_ptr<const GameMove> UCTTreeNode::GetMove() const
 	return mMove;
 }
 
-UCTTreeNode::~UCTTreeNode()
+shared_ptr<TreeNode> UCTTreeNode::SelectChild() const
 {
+	vector<shared_ptr<UCTTreeNode>> sortedChildNodes(mChildNodes);
+	sort(begin(sortedChildNodes), end(sortedChildNodes), [](shared_ptr<UCTTreeNode> x, shared_ptr<UCTTreeNode> y){ return x->UCTValue() > y->UCTValue(); });
+	return sortedChildNodes.at(0);
 }
