@@ -1,5 +1,6 @@
 #pragma once
 #include "TreeNode.h"
+#include <random>
 
 namespace mcts
 {
@@ -34,6 +35,7 @@ namespace mcts
 		int mPlayerWhoJustMoved;
 		double UCTValue() const;
 		string IndentString(int indent) const;
+		shared_ptr<mt19937> randomEng;
 	};
 }
 

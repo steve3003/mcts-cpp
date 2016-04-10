@@ -9,7 +9,7 @@ namespace mcts
 	class TreeNode
 	{
 	public:
-		virtual ~TreeNode() = 0;
+		virtual ~TreeNode() = 0 {};
 		virtual shared_ptr<TreeNode> AddChild(shared_ptr<const GameMove> move, shared_ptr<const GameState> state) = 0;
 		virtual string ChildrenToString() const = 0;
 		virtual shared_ptr<const GameMove> GetBestMove() const = 0;
