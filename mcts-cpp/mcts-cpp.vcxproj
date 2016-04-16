@@ -11,6 +11,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Src\TreeNode.cpp" />
+    <ClCompile Include="Src\GameMove.cpp" />
     <ClCompile Include="Src\MCTSAlgorithm.cpp" />
     <ClCompile Include="Src\mcts-cpp.cpp" />
     <ClCompile Include="Src\UCTTreeNode.cpp" />

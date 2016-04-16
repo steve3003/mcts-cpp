@@ -11,7 +11,6 @@ namespace mcts
 	public:
 		virtual ~TreeNode() = 0 {};
 		virtual shared_ptr<TreeNode> AddChild(shared_ptr<const GameMove> move, shared_ptr<const GameState> state) = 0;
-		virtual string ChildrenToString() const = 0;
 		virtual shared_ptr<const GameMove> GetBestMove() const = 0;
 		virtual bool HasChildren() const = 0;
 		virtual bool HasMovesToTry() const = 0;
@@ -20,9 +19,13 @@ namespace mcts
 		virtual int GetPlayerWhoJustMoved() const = 0;
 		virtual shared_ptr<TreeNode> SelectChild() const = 0;
 		virtual shared_ptr<const GameMove> SelectUntriedMove() const = 0;
-		virtual string ToString() const = 0;
-		virtual string TreeToString(int indent) const = 0;
 		virtual void Update(double result) = 0;
+
+		virtual ostream& ChildrenToString(ostream& ostr) const = 0;
+		virtual ostream& TreeToString(ostream& ostr, int indent) const = 0;
+		friend ostream& operator<<(ostream& ostr, const TreeNode& treeNode);
+	private:
+		virtual ostream& ToString(ostream& ostr) const = 0;
 	};
 }
 

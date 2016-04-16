@@ -30,13 +30,12 @@ shared_ptr<TreeNode> UCTTreeNode::AddChild(shared_ptr<const GameMove> move, shar
 	return n;
 }
 
-string UCTTreeNode::ChildrenToString() const
+ostream& UCTTreeNode::ChildrenToString(ostream& ostr) const
 {
-	string s = "";
 	for (auto& c : mChildNodes) {
-		s += c->ToString() + "\n";
+		ostr << c << endl;
 	}
-	return s;
+	return ostr;
 }
 
 shared_ptr<const GameMove> UCTTreeNode::GetBestMove() const
@@ -84,20 +83,20 @@ shared_ptr<const GameMove> UCTTreeNode::SelectUntriedMove() const
 	return mUntriedMoves[dist(*randomEng)];
 }
 
-string UCTTreeNode::ToString() const
+ostream& UCTTreeNode::ToString(ostream& ostr) const
 {
-	ostringstream stream;
-	stream << "[M:" << mMove->ToString() << " W/V:" << mWins << "/" << mVisits + "]";
-	return stream.str();
+	ostr << "[M:" << mMove << " W/V:" << mWins << "/" << mVisits + "]";
+	return ostr;
 }
 
-string UCTTreeNode::TreeToString(int indent) const
+ostream& UCTTreeNode::TreeToString(ostream& ostr, int indent) const
 {
-	string s = IndentString(indent) + ToString();
-	for (auto& c : mChildNodes) {
-		s += c->TreeToString(indent + 1);
+	IndentString(ostr, indent) << this;
+	for (auto& c : mChildNodes)
+	{
+		c->TreeToString(ostr, indent + 1);
 	}
-	return s;
+	return ostr;
 }
 
 void UCTTreeNode::Update(double result)
@@ -111,11 +110,12 @@ double UCTTreeNode::UCTValue() const
 	return mWins / mVisits + mConstant * sqrt(2 * log(mParent->mVisits) / mVisits);
 }
 
-string UCTTreeNode::IndentString(int indent) const
+ostream& UCTTreeNode::IndentString(ostream& ostr, int indent) const
 {
-	string s = "\n";
-	for (int i = 1; i < indent + 1; ++i) {
-		s += "| ";
+	ostr << endl;
+	for (int i = 1; i < indent + 1; ++i)
+	{
+		ostr << "| ";
 	}
-	return s;
+	return ostr;
 }

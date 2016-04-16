@@ -10,7 +10,9 @@ namespace mcts
 	{
 	public:
 		virtual ~GameMove() = 0;
-		virtual string ToString() const = 0;
+		friend ostream& operator<<(ostream& ostr, const GameMove& move);
+	private:
+		virtual ostream& ToString(ostream& ostr) const = 0;
 	};
 }
 

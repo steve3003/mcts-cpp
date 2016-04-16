@@ -56,5 +56,11 @@
     <ClCompile Include="Src\UCTTreeNode.cpp">
       <Filter>Source Files\MCTS\UCT</Filter>
     </ClCompile>
+    <ClCompile Include="Src\TreeNode.cpp">
+      <Filter>Source Files\MCTS</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\GameMove.cpp">
+      <Filter>Source Files\MCTS</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
