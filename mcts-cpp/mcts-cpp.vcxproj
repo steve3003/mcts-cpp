@@ -11,11 +11,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Src\TreeNodeCreator.cpp" />
     <ClCompile Include="Src\TreeNode.cpp" />
     <ClCompile Include="Src\GameMove.cpp" />
     <ClCompile Include="Src\MCTSAlgorithm.cpp" />
     <ClCompile Include="Src\mcts-cpp.cpp" />
     <ClCompile Include="Src\UCTTreeNode.cpp" />
+    <ClCompile Include="Src\UCTTreeNodeCreator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Inc\GameMove.h" />
@@ -24,6 +26,7 @@
     <ClInclude Include="Inc\TreeNodeCreator.h" />
     <ClInclude Include="Inc\MCTSAlgorithm.h" />
     <ClInclude Include="Inc\UCTTreeNode.h" />
+    <ClInclude Include="Inc\UCTTreeNodeCreator.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{23F4D735-C4E5-490E-A7BA-9E1D53750527}</ProjectGuid>

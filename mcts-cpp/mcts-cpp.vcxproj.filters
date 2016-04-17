@@ -45,6 +45,9 @@
     <ClInclude Include="Inc\UCTTreeNode.h">
       <Filter>Header Files\MCTS\UCT</Filter>
     </ClInclude>
+    <ClInclude Include="Inc\UCTTreeNodeCreator.h">
+      <Filter>Header Files\MCTS\UCT</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\mcts-cpp.cpp">
@@ -60,6 +63,12 @@
       <Filter>Source Files\MCTS</Filter>
     </ClCompile>
     <ClCompile Include="Src\GameMove.cpp">
+      <Filter>Source Files\MCTS</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\UCTTreeNodeCreator.cpp">
+      <Filter>Source Files\MCTS\UCT</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\TreeNodeCreator.cpp">
       <Filter>Source Files\MCTS</Filter>
     </ClCompile>
   </ItemGroup>

@@ -4,14 +4,14 @@
 
 using namespace mcts;
 
-UCTTreeNode::UCTTreeNode(shared_ptr<const GameMove> move, shared_ptr<UCTTreeNode> parent, shared_ptr<const GameState> state,
+UCTTreeNode::UCTTreeNode(shared_ptr<const GameMove> move, shared_ptr<UCTTreeNode> parent, const GameState& state,
 	double constant /*= 1.0*/, bool generateUntriedMoves /*= true*/)
 	: mMove(move), mParent(parent), mConstant(constant), mWins(0), mVisits(0)
 {
-	mPlayerWhoJustMoved = state->GetPlayerWhoJustMoved();
+	mPlayerWhoJustMoved = state.GetPlayerWhoJustMoved();
 	if (generateUntriedMoves)
 	{
-		mUntriedMoves = state->GetMoves();
+		mUntriedMoves = state.GetMoves();
 	}
 
 	random_device rndDevice;
@@ -22,7 +22,7 @@ UCTTreeNode::~UCTTreeNode()
 {
 }
 
-shared_ptr<TreeNode> UCTTreeNode::AddChild(shared_ptr<const GameMove> move, shared_ptr<const GameState> state)
+shared_ptr<TreeNode> UCTTreeNode::AddChild(shared_ptr<const GameMove> move, const GameState& state)
 {
 	shared_ptr<UCTTreeNode> n = make_shared<UCTTreeNode>(move, make_shared<UCTTreeNode>(*this), state, mConstant);
 	mUntriedMoves.erase(remove(mUntriedMoves.begin(), mUntriedMoves.end(), move), mUntriedMoves.end());

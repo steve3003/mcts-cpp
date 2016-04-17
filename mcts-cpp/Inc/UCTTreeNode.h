@@ -8,9 +8,9 @@ namespace mcts
 		public TreeNode
 	{
 	public:
-		UCTTreeNode(shared_ptr<const GameMove> move, shared_ptr<UCTTreeNode> parent, shared_ptr<const GameState> state, double constant = 1.0, bool generateUntriedMoves = true);
+		UCTTreeNode(shared_ptr<const GameMove> move, shared_ptr<UCTTreeNode> parent, const GameState& state, double constant = 1.0, bool generateUntriedMoves = true);
 		virtual ~UCTTreeNode();
-		virtual shared_ptr<TreeNode> AddChild(shared_ptr<const GameMove> move, shared_ptr<const GameState> state) override;
+		virtual shared_ptr<TreeNode> AddChild(shared_ptr<const GameMove> move, const GameState& state) override;
 		virtual shared_ptr<const GameMove> GetBestMove() const override;
 		virtual bool HasChildren() const override;
 		virtual bool HasMovesToTry() const override;

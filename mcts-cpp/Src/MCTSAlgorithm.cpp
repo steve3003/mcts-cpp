@@ -28,7 +28,7 @@ const shared_ptr<const GameMove> MCTSAlgorithm::Search(const GameState& rootStat
 		if (node->HasMovesToTry()) {
 			shared_ptr<const GameMove> move = node->SelectUntriedMove();
 			state->DoMove(*move);
-			node = node->AddChild(move, state);
+			node = node->AddChild(move, *state);
 		}
 
 		// Rollout
