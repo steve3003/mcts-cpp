@@ -25,6 +25,12 @@
     <Filter Include="Source Files\MCTS\UCT">
       <UniqueIdentifier>{58da9053-a1ac-47fb-8634-b9bc28dfeef2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Connect4">
+      <UniqueIdentifier>{04440762-7497-48e3-b447-9a43c6ea732c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Connect4">
+      <UniqueIdentifier>{8e15d536-cd94-4f7d-b032-420bf8337606}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Inc\TreeNodeCreator.h">
@@ -48,6 +54,12 @@
     <ClInclude Include="Inc\UCTTreeNodeCreator.h">
       <Filter>Header Files\MCTS\UCT</Filter>
     </ClInclude>
+    <ClInclude Include="Inc\Connect4GameMove.h">
+      <Filter>Header Files\Connect4</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\Connect4GameState.h">
+      <Filter>Header Files\Connect4</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Src\mcts-cpp.cpp">
@@ -70,6 +82,12 @@
     </ClCompile>
     <ClCompile Include="Src\TreeNodeCreator.cpp">
       <Filter>Source Files\MCTS</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Connect4GameMove.cpp">
+      <Filter>Source Files\Connect4</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Connect4GameState.cpp">
+      <Filter>Source Files\Connect4</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
