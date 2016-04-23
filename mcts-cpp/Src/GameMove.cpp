@@ -1,6 +1,9 @@
 #include "GameMove.h"
 
-ostream& mcts::operator<<(ostream & ostr, const GameMove & move)
+namespace mcts
 {
-	return move.ToString(ostr);
+	ostream& operator<<(ostream & ostr, const GameMove & move)
+	{
+		return move.ToString(ostr);
+	}
 }

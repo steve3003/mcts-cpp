@@ -1,6 +1,9 @@
 #include "TreeNode.h"
 
-ostream& mcts::operator<<(ostream & ostr, const TreeNode & treeNode)
+namespace mcts
 {
-	return treeNode.ToString(ostr);
+	ostream& operator<<(ostream & ostr, const TreeNode & treeNode)
+	{
+		return treeNode.ToString(ostr);
+	}
 }

@@ -13,81 +13,54 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\MCTS">
-      <UniqueIdentifier>{b66bbd6d-bee7-4228-b55e-41ec3aa9b151}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\MCTS">
-      <UniqueIdentifier>{cfca1caa-4442-42d2-84b0-a5abadb83533}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\MCTS\UCT">
+    <Filter Include="Header Files\UCT">
       <UniqueIdentifier>{1989ff1e-d074-4423-afd8-1b6692d6ea20}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\MCTS\UCT">
+    <Filter Include="Source Files\UCT">
       <UniqueIdentifier>{58da9053-a1ac-47fb-8634-b9bc28dfeef2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Connect4">
-      <UniqueIdentifier>{04440762-7497-48e3-b447-9a43c6ea732c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Connect4">
-      <UniqueIdentifier>{8e15d536-cd94-4f7d-b032-420bf8337606}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Inc\TreeNodeCreator.h">
-      <Filter>Header Files\MCTS</Filter>
-    </ClInclude>
-    <ClInclude Include="Inc\GameMove.h">
-      <Filter>Header Files\MCTS</Filter>
-    </ClInclude>
-    <ClInclude Include="Inc\GameState.h">
-      <Filter>Header Files\MCTS</Filter>
-    </ClInclude>
-    <ClInclude Include="Inc\MCTSAlgorithm.h">
-      <Filter>Header Files\MCTS</Filter>
-    </ClInclude>
-    <ClInclude Include="Inc\TreeNode.h">
-      <Filter>Header Files\MCTS</Filter>
-    </ClInclude>
     <ClInclude Include="Inc\UCTTreeNode.h">
-      <Filter>Header Files\MCTS\UCT</Filter>
+      <Filter>Header Files\UCT</Filter>
     </ClInclude>
     <ClInclude Include="Inc\UCTTreeNodeCreator.h">
-      <Filter>Header Files\MCTS\UCT</Filter>
+      <Filter>Header Files\UCT</Filter>
     </ClInclude>
-    <ClInclude Include="Inc\Connect4GameMove.h">
-      <Filter>Header Files\Connect4</Filter>
+    <ClInclude Include="Inc\GameMove.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Inc\Connect4GameState.h">
-      <Filter>Header Files\Connect4</Filter>
+    <ClInclude Include="Inc\GameState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\MCTSAlgorithm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\TreeNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Inc\TreeNodeCreator.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Src\mcts-cpp.cpp">
+    <ClCompile Include="Src\UCTTreeNode.cpp">
+      <Filter>Source Files\UCT</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\UCTTreeNodeCreator.cpp">
+      <Filter>Source Files\UCT</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\GameMove.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Src\MCTSAlgorithm.cpp">
-      <Filter>Source Files\MCTS</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\UCTTreeNode.cpp">
-      <Filter>Source Files\MCTS\UCT</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Src\TreeNode.cpp">
-      <Filter>Source Files\MCTS</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\GameMove.cpp">
-      <Filter>Source Files\MCTS</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\UCTTreeNodeCreator.cpp">
-      <Filter>Source Files\MCTS\UCT</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Src\TreeNodeCreator.cpp">
-      <Filter>Source Files\MCTS</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Connect4GameMove.cpp">
-      <Filter>Source Files\Connect4</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\Connect4GameState.cpp">
-      <Filter>Source Files\Connect4</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

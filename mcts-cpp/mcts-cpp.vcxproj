@@ -11,19 +11,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Src\Connect4GameState.cpp" />
-    <ClCompile Include="Src\Connect4GameMove.cpp" />
     <ClCompile Include="Src\TreeNodeCreator.cpp" />
     <ClCompile Include="Src\TreeNode.cpp" />
     <ClCompile Include="Src\GameMove.cpp" />
     <ClCompile Include="Src\MCTSAlgorithm.cpp" />
-    <ClCompile Include="Src\mcts-cpp.cpp" />
     <ClCompile Include="Src\UCTTreeNode.cpp" />
     <ClCompile Include="Src\UCTTreeNodeCreator.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Inc\Connect4GameState.h" />
-    <ClInclude Include="Inc\Connect4GameMove.h" />
     <ClInclude Include="Inc\GameMove.h" />
     <ClInclude Include="Inc\GameState.h" />
     <ClInclude Include="Inc\TreeNode.h" />
@@ -36,10 +31,11 @@
     <ProjectGuid>{23F4D735-C4E5-490E-A7BA-9E1D53750527}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>mctscpp</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
