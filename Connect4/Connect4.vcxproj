@@ -21,7 +21,7 @@
   <ItemGroup>
     <ClCompile Include="Src\Connect4GameMove.cpp" />
     <ClCompile Include="Src\Connect4GameState.cpp" />
-    <ClCompile Include="Src\mcts-cpp.cpp" />
+    <ClCompile Include="Src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Inc\Connect4GameMove.h" />

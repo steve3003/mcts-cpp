@@ -21,7 +21,7 @@
     <ClCompile Include="Src\Connect4GameState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\mcts-cpp.cpp">
+    <ClCompile Include="Src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
