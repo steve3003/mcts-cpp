@@ -7,7 +7,7 @@ class Connect4GameState :
 	public GameState
 {
 public:
-	Connect4GameState();
+	Connect4GameState(int rows = 6, int cols = 7);
 	virtual ~Connect4GameState();
 	virtual shared_ptr<GameState> Clone() const override;
 	virtual vector<shared_ptr<const GameMove>> GetMoves() const override;
@@ -19,13 +19,16 @@ public:
 	virtual bool IsTerminal() const override;
 	virtual shared_ptr<const GameMove> ParseMove(const string& move) const override;
 private:
+	const static int directions[4][2];
 	int mPlayerWhoJustMoved;
 	int mCols;
 	int mRows;
-	int mBoard[6][7];
+	vector<vector<int>> mBoard;
 	int mWinner;
 	bool mNotWin;
-	bool mStateChanged;
 	vector<shared_ptr<const GameMove>> mMoves;
+	void CalculateMoves();
+	bool CheckWinDirections(int player, int x, int y);
+	int Near(int player, int x, int y, int dx, int dy);
 };
 
