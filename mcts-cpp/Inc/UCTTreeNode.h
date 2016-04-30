@@ -10,6 +10,11 @@ namespace mcts
 	public:
 		UCTTreeNode(shared_ptr<const GameMove> move, shared_ptr<UCTTreeNode> parent, const GameState& state, double constant = 1.0, bool generateUntriedMoves = true);
 		virtual ~UCTTreeNode();
+		UCTTreeNode(const UCTTreeNode& src);
+		UCTTreeNode& operator=(const UCTTreeNode& rhs);
+		UCTTreeNode(UCTTreeNode&& src) noexcept;
+		UCTTreeNode& operator=(UCTTreeNode&& rhs) noexcept;
+
 		virtual shared_ptr<TreeNode> AddChild(shared_ptr<const GameMove> move, const GameState& state) override;
 		virtual shared_ptr<const GameMove> GetBestMove() const override;
 		virtual bool HasChildren() const override;
@@ -29,13 +34,16 @@ namespace mcts
 		int mVisits;
 		double mConstant;
 	private:
+		void CopyFrom(const UCTTreeNode& src);
+		void FreeMemory();
+		void MoveFrom(const UCTTreeNode& src);
 		virtual ostream& ToString(ostream& ostr) const override;
+		double UCTValue() const;
+		ostream& IndentString(ostream&, int indent) const;
 		shared_ptr<UCTTreeNode> mParent;
 		shared_ptr<const GameMove> mMove;
 		double mWins;
 		int mPlayerWhoJustMoved;
-		double UCTValue() const;
-		ostream& IndentString(ostream&, int indent) const;
 		shared_ptr<mt19937> randomEng;
 	};
 }

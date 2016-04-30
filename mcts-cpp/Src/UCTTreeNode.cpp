@@ -22,6 +22,40 @@ namespace mcts
 	{
 	}
 
+	UCTTreeNode::UCTTreeNode(const UCTTreeNode& src)
+	{
+		CopyFrom(src);
+	}
+
+	UCTTreeNode& UCTTreeNode::operator=(const UCTTreeNode& rhs)
+	{
+		// Check for self-assignment.
+		if (this == &rhs) {
+			return *this;
+		}
+		// Free the old memory.
+		FreeMemory();
+		// Copy the new memory.
+		CopyFrom(rhs);
+		return *this;
+	}
+
+	UCTTreeNode::UCTTreeNode(UCTTreeNode&& src) noexcept
+	{
+		MoveFrom(src);
+	}
+
+	UCTTreeNode& UCTTreeNode::operator=(UCTTreeNode&& rhs) noexcept
+	{
+		// Check for self-assignment
+		if (this == &rhs) {
+			return *this;
+		}
+		// Shallow copy of data
+		MoveFrom(rhs);
+		return *this;
+	}
+
 	shared_ptr<TreeNode> UCTTreeNode::AddChild(shared_ptr<const GameMove> move, const GameState& state)
 	{
 		shared_ptr<UCTTreeNode> n = make_shared<UCTTreeNode>(move, make_shared<UCTTreeNode>(*this), state, mConstant);
@@ -81,6 +115,40 @@ namespace mcts
 	{
 		uniform_int_distribution<int> dist(0, mUntriedMoves.size());
 		return mUntriedMoves[dist(*randomEng)];
+	}
+
+	void UCTTreeNode::CopyFrom(const UCTTreeNode & src)
+	{
+		for (auto& c : src.mChildNodes)
+		{
+			mChildNodes.push_back(make_shared<UCTTreeNode>(*c));
+		}
+		mUntriedMoves = src.mUntriedMoves;
+		mVisits = src.mVisits;
+		mConstant = src.mConstant;
+		mMove = src.mMove;
+		mWins = src.mWins;
+		mPlayerWhoJustMoved = src.mPlayerWhoJustMoved;
+		randomEng = src.randomEng;
+	}
+
+	void UCTTreeNode::FreeMemory()
+	{
+		mChildNodes.clear();
+		mParent = nullptr;
+	}
+
+	void UCTTreeNode::MoveFrom(const UCTTreeNode & src)
+	{
+		mChildNodes = move(src.mChildNodes);
+		mUntriedMoves = move(src.mUntriedMoves);
+		mVisits = move(src.mVisits);
+		mConstant = move(src.mConstant);
+		mParent = move(src.mParent);
+		mMove = move(src.mMove);
+		mWins = move(src.mWins);
+		mPlayerWhoJustMoved = move(src.mPlayerWhoJustMoved);
+		randomEng = move(src.randomEng);
 	}
 
 	ostream& UCTTreeNode::ToString(ostream& ostr) const

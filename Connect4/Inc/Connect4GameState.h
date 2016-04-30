@@ -8,8 +8,7 @@ class Connect4GameState :
 {
 public:
 	Connect4GameState(int rows = 6, int cols = 7);
-	virtual ~Connect4GameState();
-	virtual shared_ptr<GameState> Clone() const override;
+	virtual GameState& Clone() const override;
 	virtual vector<shared_ptr<const GameMove>> GetMoves() const override;
 	virtual void DoMove(const GameMove& move) override;
 	virtual double GetResult(int player) const override;

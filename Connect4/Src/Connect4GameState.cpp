@@ -18,13 +18,9 @@ Connect4GameState::Connect4GameState(int rows /*= 6*/, int cols /*= 7*/) :
 	CalculateMoves();
 }
 
-Connect4GameState::~Connect4GameState()
+GameState& Connect4GameState::Clone() const
 {
-}
-
-shared_ptr<GameState> Connect4GameState::Clone() const
-{
-	return shared_ptr<GameState>();
+	return Connect4GameState(*this);
 }
 
 vector<shared_ptr<const GameMove>> Connect4GameState::GetMoves() const
