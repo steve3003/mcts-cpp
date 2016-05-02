@@ -113,7 +113,7 @@ namespace mcts
 
 	shared_ptr<const GameMove> UCTTreeNode::SelectUntriedMove() const
 	{
-		uniform_int_distribution<int> dist(0, mUntriedMoves.size());
+		uniform_int_distribution<int> dist(0, mUntriedMoves.size() - 1);
 		return mUntriedMoves[dist(*randomEng)];
 	}
 

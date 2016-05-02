@@ -12,7 +12,7 @@ namespace mcts
 	{
 	public:
 		virtual ~GameState() = 0 {};
-		virtual GameState& Clone() const = 0;
+		virtual shared_ptr<GameState> Clone() const = 0;
 		virtual vector<shared_ptr<const GameMove>> GetMoves() const = 0;
 		virtual void DoMove(const GameMove& move) = 0;
 		virtual double GetResult(int player) const = 0;
@@ -21,6 +21,9 @@ namespace mcts
 		virtual int GetPlayerWhoJustMoved() const = 0;
 		virtual bool IsTerminal() const = 0;
 		virtual shared_ptr<const GameMove> ParseMove(const string& move) const = 0;
+		friend ostream& operator<<(ostream& ostr, const GameState& state);
+	private:
+		virtual ostream& ToString(ostream& ostr) const = 0;
 	};
 }
 

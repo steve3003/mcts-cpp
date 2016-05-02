@@ -16,7 +16,7 @@ namespace mcts
 		for (int i = 0; i < iterations; ++i)
 		{
 			shared_ptr<TreeNode> node = rootNode;
-			shared_ptr<GameState> state(&rootState.Clone());
+			shared_ptr<GameState> state = rootState.Clone();
 
 			// Select
 			while (!node->HasMovesToTry() && node->HasChildren()) {
