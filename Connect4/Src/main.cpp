@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
 		{
 			if (state.GetPlayerWhoJustMoved() % 2 == 1)
 			{
-				move = mcts.Search(state, 10);
+				move = mcts.Search(state, 1000);
 			}
 			else
 			{
@@ -31,9 +31,9 @@ int main(int argc, char *argv[])
 				move = state.ParseMove(input);
 			}
 			state.DoMove(*move);
-		} while (move != nullptr);
-		cout << "Player " << (state.GetPlayerWhoJustMoved() + 1) << " Best move: " << move << endl;
-		getchar();
+		} while (move == nullptr);
+		cout << "Player " << state.GetPlayerWhoJustMoved() << " Best move: " << *move << endl;
+		//getchar();
 	}
 	cout << state;
 

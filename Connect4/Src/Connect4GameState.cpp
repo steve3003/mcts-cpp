@@ -16,6 +16,9 @@ Connect4GameState::Connect4GameState(int rows /*= 6*/, int cols /*= 7*/) :
 		mBoard.push_back(row);
 	}
 	CalculateMoves();
+
+	random_device rndDevice;
+	randomEng = make_shared<mt19937>(rndDevice());
 }
 
 shared_ptr<GameState> Connect4GameState::Clone() const
@@ -32,7 +35,7 @@ void Connect4GameState::DoMove(const GameMove& move)
 {
 	const Connect4GameMove& f4Move = dynamic_cast<const Connect4GameMove&>(move);
 	mPlayerWhoJustMoved = 3 - mPlayerWhoJustMoved;
-	for (int i = mRows - 1; i >= 0; i--)
+	for (int i = mRows - 1; i >= 0; --i)
 	{
 		if (mBoard[i][f4Move.GetMove()] == 0)
 		{
@@ -46,6 +49,7 @@ void Connect4GameState::DoMove(const GameMove& move)
 		}
 	}
 
+	mMoves.clear();
 	CalculateMoves();
 }
 
@@ -69,7 +73,8 @@ int Connect4GameState::GetWinner() const
 
 const GameMove& Connect4GameState::GetSimulationMove() const
 {
-	return *mMoves[0];
+	uniform_int_distribution<int> dist(0, mMoves.size() - 1);
+	return *mMoves[dist(*randomEng)];
 }
 
 int Connect4GameState::GetPlayerWhoJustMoved() const
@@ -84,7 +89,7 @@ bool Connect4GameState::IsTerminal() const
 
 shared_ptr<const GameMove> Connect4GameState::ParseMove(const string& move) const
 {
-	return dynamic_pointer_cast<const GameMove>(make_shared<const Connect4GameState>(stoi(move)));
+	return dynamic_pointer_cast<const GameMove>(make_shared<const Connect4GameMove>(stoi(move)));
 }
 
 ostream& Connect4GameState::ToString(ostream& ostr) const

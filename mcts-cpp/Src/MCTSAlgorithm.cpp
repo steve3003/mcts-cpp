@@ -1,4 +1,10 @@
+#define DEBUG
+
 #include "MCTSAlgorithm.h"
+
+#ifdef DEBUG
+#include <iostream>
+#endif // DEBUG
 
 namespace mcts
 {
@@ -47,6 +53,10 @@ namespace mcts
 				break;
 			}
 		}
+
+#ifdef DEBUG
+		rootNode->ChildrenToString(cout) << endl;
+#endif // DEBUG
 
 		return rootNode->GetBestMove();
 	}

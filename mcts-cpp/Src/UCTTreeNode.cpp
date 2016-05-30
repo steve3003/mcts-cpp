@@ -67,7 +67,7 @@ namespace mcts
 	ostream& UCTTreeNode::ChildrenToString(ostream& ostr) const
 	{
 		for (auto& c : mChildNodes) {
-			ostr << c << endl;
+			ostr << *c << endl;
 		}
 		return ostr;
 	}
@@ -153,7 +153,7 @@ namespace mcts
 
 	ostream& UCTTreeNode::ToString(ostream& ostr) const
 	{
-		ostr << "[M:" << mMove << " W/V:" << mWins << "/" << mVisits + "]";
+		ostr << "[M:" << *mMove << " W/V:" << mWins << "/" << mVisits << "]";
 		return ostr;
 	}
 

@@ -1,5 +1,6 @@
 #pragma once
 #include "GameState.h"
+#include <random>
 
 using namespace mcts;
 
@@ -30,5 +31,6 @@ private:
 	void CalculateMoves();
 	bool CheckWinDirections(int player, int x, int y);
 	int Near(int player, int x, int y, int dx, int dy);
+	shared_ptr<mt19937> randomEng;
 };
 
