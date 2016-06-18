@@ -10,7 +10,7 @@ namespace mcts
 	{
 	public:
 		virtual ~TreeNode() = 0 {};
-		virtual shared_ptr<TreeNode> AddChild(shared_ptr<const GameMove> move, const GameState& state) = 0;
+		virtual shared_ptr<TreeNode> AddChild(shared_ptr<const GameMove> move, shared_ptr<TreeNode> parent, const GameState& state) = 0;
 		virtual shared_ptr<const GameMove> GetBestMove() const = 0;
 		virtual bool HasChildren() const = 0;
 		virtual bool HasMovesToTry() const = 0;

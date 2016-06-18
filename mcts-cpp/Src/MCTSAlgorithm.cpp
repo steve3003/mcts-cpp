@@ -34,7 +34,7 @@ namespace mcts
 			if (node->HasMovesToTry()) {
 				shared_ptr<const GameMove> move = node->SelectUntriedMove();
 				state->DoMove(*move);
-				node = node->AddChild(move, *state);
+				node = node->AddChild(move, node, *state);
 			}
 
 			// Rollout
@@ -56,6 +56,7 @@ namespace mcts
 
 #ifdef DEBUG
 		rootNode->ChildrenToString(cout) << endl;
+		//rootNode->TreeToString(cout, 0) << endl;
 #endif // DEBUG
 
 		return rootNode->GetBestMove();

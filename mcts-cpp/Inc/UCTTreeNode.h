@@ -15,7 +15,7 @@ namespace mcts
 		UCTTreeNode(UCTTreeNode&& src) noexcept;
 		UCTTreeNode& operator=(UCTTreeNode&& rhs) noexcept;
 
-		virtual shared_ptr<TreeNode> AddChild(shared_ptr<const GameMove> move, const GameState& state) override;
+		virtual shared_ptr<TreeNode> AddChild(shared_ptr<const GameMove> move, shared_ptr<TreeNode> parent, const GameState& state) override;
 		virtual shared_ptr<const GameMove> GetBestMove() const override;
 		virtual bool HasChildren() const override;
 		virtual bool HasMovesToTry() const override;

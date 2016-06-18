@@ -56,9 +56,9 @@ namespace mcts
 		return *this;
 	}
 
-	shared_ptr<TreeNode> UCTTreeNode::AddChild(shared_ptr<const GameMove> move, const GameState& state)
+	shared_ptr<TreeNode> UCTTreeNode::AddChild(shared_ptr<const GameMove> move, shared_ptr<TreeNode> parent, const GameState& state)
 	{
-		shared_ptr<UCTTreeNode> n = make_shared<UCTTreeNode>(move, make_shared<UCTTreeNode>(*this), state, mConstant);
+		shared_ptr<UCTTreeNode> n = make_shared<UCTTreeNode>(move, dynamic_pointer_cast<UCTTreeNode>(parent), state, mConstant);
 		mUntriedMoves.erase(remove(mUntriedMoves.begin(), mUntriedMoves.end(), move), mUntriedMoves.end());
 		mChildNodes.push_back(n);
 		return n;
@@ -153,13 +153,20 @@ namespace mcts
 
 	ostream& UCTTreeNode::ToString(ostream& ostr) const
 	{
-		ostr << "[M:" << *mMove << " W/V:" << mWins << "/" << mVisits << "]";
+		if (mMove != nullptr)
+		{
+			ostr << "[M:" << *mMove << " W/V:" << mWins << "/" << mVisits << "]";
+		}
+		else
+		{
+			ostr << "[Root]";
+		}
 		return ostr;
 	}
 
 	ostream& UCTTreeNode::TreeToString(ostream& ostr, int indent) const
 	{
-		IndentString(ostr, indent) << this;
+		IndentString(ostr, indent) << *this;
 		for (auto& c : mChildNodes)
 		{
 			c->TreeToString(ostr, indent + 1);
