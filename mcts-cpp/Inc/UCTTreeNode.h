@@ -40,7 +40,7 @@ namespace mcts
 		virtual ostream& ToString(ostream& ostr) const override;
 		double UCTValue() const;
 		ostream& IndentString(ostream&, int indent) const;
-		shared_ptr<UCTTreeNode> mParent;
+		weak_ptr<UCTTreeNode> mParent;
 		shared_ptr<const GameMove> mMove;
 		double mWins;
 		int mPlayerWhoJustMoved;

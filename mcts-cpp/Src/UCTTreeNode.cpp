@@ -96,7 +96,7 @@ namespace mcts
 
 	shared_ptr<TreeNode> UCTTreeNode::GetParent() const
 	{
-		return mParent;
+		return mParent.lock();
 	}
 
 	shared_ptr<const GameMove> UCTTreeNode::GetMove() const
@@ -135,7 +135,7 @@ namespace mcts
 	void UCTTreeNode::FreeMemory()
 	{
 		mChildNodes.clear();
-		mParent = nullptr;
+		mParent.reset();
 	}
 
 	void UCTTreeNode::MoveFrom(const UCTTreeNode & src)
@@ -182,7 +182,8 @@ namespace mcts
 
 	double UCTTreeNode::UCTValue() const
 	{
-		return mWins / mVisits + mConstant * sqrt(2 * log(mParent->mVisits) / mVisits);
+		auto parent = mParent.lock();
+		return mWins / mVisits + mConstant * sqrt(2 * log(parent->mVisits) / mVisits);
 	}
 
 	ostream& UCTTreeNode::IndentString(ostream& ostr, int indent) const
