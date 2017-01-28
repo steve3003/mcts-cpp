@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Src\Game.cpp" />
     <ClCompile Include="Src\GameState.cpp" />
     <ClCompile Include="Src\TreeNodeCreator.cpp" />
     <ClCompile Include="Src\TreeNode.cpp" />
@@ -20,6 +21,7 @@
     <ClCompile Include="Src\UCTTreeNodeCreator.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Inc\Game.h" />
     <ClInclude Include="Inc\GameMove.h" />
     <ClInclude Include="Inc\GameState.h" />
     <ClInclude Include="Inc\TreeNode.h" />
