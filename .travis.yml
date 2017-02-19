@@ -3,11 +3,14 @@ language: cpp
 compiler: gcc
 
 before_install:
-- sudo apt-get update -qq
-- sudo apt-get install -qq python
-- sudo apt-get install -qq gcc-4.8 g++-4.8
+  - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
+  - sudo apt-get update -qq
+  - sudo apt-get install -qq python
+  - if [ "$CXX" = "clang++" ]; then sudo apt-get install -qq libstdc++-4.8-dev; fi
+  - if [ "$CXX" = "g++" ]; then sudo apt-get install -qq g++-4.8; fi
+  - if [ "$CXX" = "g++" ]; then export CXX="g++-4.8" CC="gcc-4.8"; fi
 
 script:
-- mkdir gcc
-- python convert_to_one_file.py
-- g++-4.8 gcc/main.cpp -std=c++11 -o gcc/main
+  - mkdir gcc
+  - python convert_to_one_file.py
+  - $CXX gcc/main.cpp -std=c++11 -o gcc/main
