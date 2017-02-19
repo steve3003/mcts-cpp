@@ -67,4 +67,4 @@ with open(output_file, "w") as f:
             f.write('\n')
     f.write(source_output)
 
-os.system("pause")
+#os.system("pause")
