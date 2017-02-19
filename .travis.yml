@@ -9,4 +9,4 @@ before_install:
 script:
 - mkdir gcc
 - python convert_to_one_file.py
-- $CXX gcc/main.cpp -std=c++11 -o gcc/main
+- $CXX gcc/main.cpp -std=c++0x -o gcc/main
