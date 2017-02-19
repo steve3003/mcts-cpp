@@ -11,7 +11,7 @@ namespace mcts
 	class GameState
 	{
 	public:
-		virtual ~GameState() = 0 {};
+		virtual ~GameState() = 0;
 		virtual shared_ptr<GameState> Clone() const = 0;
 		virtual vector<shared_ptr<const GameMove>> GetMoves() const = 0;
 		virtual void DoMove(const GameMove& move) = 0;

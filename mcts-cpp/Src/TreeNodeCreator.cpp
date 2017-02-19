@@ -6,4 +6,8 @@ namespace mcts
 	{
 		return treeNodeCreator.ToString(ostr);
 	}
+
+	TreeNodeCreator::~TreeNodeCreator()
+	{
+	}
 }

@@ -6,4 +6,8 @@ namespace mcts
 	{
 		return move.ToString(ostr);
 	}
+
+	GameMove::~GameMove()
+	{
+	}
 }

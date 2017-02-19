@@ -6,4 +6,8 @@ namespace mcts
 	{
 		return state.ToString(ostr);
 	}
+
+	GameState::~GameState()
+	{
+	}
 }
