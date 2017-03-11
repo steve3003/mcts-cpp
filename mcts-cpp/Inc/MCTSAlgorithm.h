@@ -14,12 +14,16 @@ namespace mcts
 		MCTSAlgorithm(MCTSAlgorithm&& src) noexcept = delete;
 		MCTSAlgorithm& operator=(MCTSAlgorithm&& rhs) noexcept = delete;
 
-		const shared_ptr<const GameMove> Search(const GameState& rootState, int iterations);
+		shared_ptr<const GameMove> Search(const GameState& rootState, int iterations);
+		shared_ptr<const GameMove> Search(const GameState& rootState, float time);
 		void Abort();
-		const TreeNodeCreator& GetTreeCreator();
+		const TreeNodeCreator& GetTreeCreator() const;
+		int GetLastIterations() const;
 	private:
 		const TreeNodeCreator& mTreeCreator;
 		bool mbSearch;
+		int mLastIterations;
+		static void DoIteration(const GameState& rootState, shared_ptr<TreeNode> rootNode);
 	};
 }
 
